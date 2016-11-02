@@ -32,6 +32,8 @@ public class FileService {
 
         //sorting List
         wordList.sort(Comparator.comparing(String::length).reversed());
+        //removing all unicode characters
+        wordList.replaceAll(text -> text.replaceAll("[^\\p{L}\\p{Nd}]+", ""));
         return wordList;
     }
 }
