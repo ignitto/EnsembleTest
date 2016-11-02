@@ -21,13 +21,14 @@ public class FileService {
      */
     public List<String> readAndSortFile(URI path) throws Exception {
         final List<String> wordList = Files.lines(Paths.get(path))
-                .map(line -> line.split("[\\s]+"))
+                .map(line -> line.toLowerCase().split("[\\s]+"))
                 .flatMap(Arrays::stream)
                 .collect(Collectors.toList());
 
         if(wordList.size() == 0){
             throw new Exception("File is empty");
         }
+
 
         //sorting List
         wordList.sort(Comparator.comparing(String::length).reversed());

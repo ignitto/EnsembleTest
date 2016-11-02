@@ -23,7 +23,7 @@ public class WordCounter {
             return sortedWordsList.size()==0? filteredList: getFilteredWordsList(sortedWordsList, filteredList);
         }
 
-        if(filteredList.stream().anyMatch(str -> str.toLowerCase().contains(word.toLowerCase()))){
+        if(filteredList.stream().anyMatch(str -> str.contains(word))){
             sortedWordsList.removeFirst();
             return sortedWordsList.size()==0? filteredList: getFilteredWordsList(sortedWordsList, filteredList);
         }else{
